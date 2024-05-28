@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add custom styles here */
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Agenda</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Date of Activity</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Date of Creation</th>
+                        <th>Creator</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for activity in employee_agenda %}
+                        <tr>
+                            <td>{{ activity[1] }}</td>
+                            <td>{{ activity[2] }}</td>
+                            <td>{{ activity[3] }}</td>
+                            <td>{{ activity[4] }}</td>
+                            <td>{{ activity[5] }}</td>
+                            <td>{{ activity[6] }}</td>
+                            <td>{{ activity[7] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ department_name }} Agenda</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin-top: 20px;
+        }
+        .content-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .agenda-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fdfdfd;
+        }
+        .agenda-item h2 {
+            margin-top: 0;
+        }
+        .agenda-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="content-container">
+                    <h1>{{ department_name }} Agenda</h1>
+                    
+                    {% if Agenda %}
+                        {% for activity in Agenda %}
+                            <div class="agenda-item">
+                                <h2>{{ activity[1] }}</h2> <!-- Assuming the activity name is stored in the second column -->
+                                <p><strong>Type:</strong> {{ activity[2] }}</p> <!-- Assuming the activity type is stored in the third column -->
+                                <p><strong>Description:</strong> {{ activity[3] }}</p> 
+                                <p><strong>Time:</strong> {{ activity[4] }}</p> <!-- Assuming the activity description is stored in the fourth column -->
+                                <!-- Add more details as needed -->
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No agenda activities found for {{ department_name }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

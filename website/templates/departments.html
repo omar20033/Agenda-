@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin-top: 20px;
+        }
+        .content-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .scroll-box {
+            max-width: 100%;
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .scroll-box ul {
+            padding-left: 0;
+        }
+        .scroll-box li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        .scroll-box li a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+        .scroll-box li a:hover {
+            color: #0056b3;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="content-container">
+                    <h1>Departments</h1>
+                    <div class="scroll-box">
+                        <ul id="departmentList">
+                            {% for department in departments %}
+                                <li><a href="#" onclick="viewDepartment('{{ department[0] }}')">{{ department[0] }}</a></li> <!-- Assuming department is a tuple -->
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="button-group">
+                        <!-- Button to show all employees -->
+                        <button onclick="showAllEmployees()" class="btn btn-primary">Show All Employees</button>
+                        <button onclick="AddforEmployee()" class="btn btn-secondary">Add Activity For Employee Agenda</button>
+                        <button onclick="AddforDept()" class="btn btn-info">Add Activity For Department Agenda</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function viewDepartment(departmentName) {
+            // Redirect to the department page
+            window.location.href = '/' + encodeURIComponent(departmentName);
+        }
+
+        function showAllEmployees() {
+            // Redirect to the route for showing all employees
+            window.location.href = '/employees';
+        }
+
+        function AddforEmployee() {
+            // Redirect to the route for adding activity for employee agenda
+            window.location.href = '/add_activity';
+        }
+
+        function AddforDept() {
+            // Redirect to the route for adding activity for department agenda
+            window.location.href = '/add_activity_dept';
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

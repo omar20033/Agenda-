@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ department_name }} Employees</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style for the scroll box */
+        .scroll-box {
+            max-width: 100%; /* Ensure it is responsive */
+            height: 200px; /* Adjust height as needed */
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for employee names */
+        .employee {
+            cursor: pointer; /* Change cursor to pointer */
+            padding: 5px;
+            margin: 2px 0;
+            transition: background-color 0.3s;
+        }
+
+        /* Change cursor to hand when hovering over employee names */
+        .employee:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">{{ department_name }} Employees</h1>
+        <div class="scroll-box">
+            <ul class="list-unstyled" id="employeeList">
+                {% for employee in employees %}
+                    <li class="employee" onclick="redirectToEmployee('{{ employee }}')">{{ employee }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Function to redirect to employee details route
+        function redirectToEmployee(employeeData) {
+            console.log("Employee data:", employeeData);
+            // Split the employee data string by commas
+            const employeeArray = employeeData.split(',');
+            console.log("Employee array:", employeeArray);
+            // Extract the employee name from the first item of the array
+            const employeeName = employeeArray[0].trim().replace(/'/g, '');
+            console.log("Employee name:", employeeName);
+            // Redirect to the employee details route with the employee's name
+            window.location.href = `/employee/${encodeURIComponent(employeeName)}`;
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
